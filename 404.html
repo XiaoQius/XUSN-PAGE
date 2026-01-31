@@ -121,29 +121,8 @@
             50% { opacity: 0.7; transform: scale(1.1); }
         }
 
-        /* 自适应圆圈聚光灯 */
-        .adaptive-spotlight {
-            width: 56px;
-            height: 56px;
-        }
-        
-        @media (min-width: 768px) {
-            .adaptive-spotlight {
-                width: 64px;
-                height: 64px;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .adaptive-spotlight {
-                width: 72px;
-                height: 72px;
-            }
-        }
-
         /* 404数字动画 */
         .error-code {
-            font-size: 8rem;
             font-weight: 400;
             background: linear-gradient(135deg, #C4956A 0%, #5E7A5A 100%);
             -webkit-background-clip: text;
@@ -174,96 +153,195 @@
             opacity: 0.4;
             z-index: -1;
         }
+
+        /* 404数字自适应大小 */
+        .error-code {
+            font-size: 4rem; /* 移动端默认 */
+        }
+        
+        @media (min-width: 480px) {
+            .error-code {
+                font-size: 5rem;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .error-code {
+                font-size: 6rem;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .error-code {
+                font-size: 8rem;
+            }
+        }
+
+        /* 按钮自适应大小 */
+        .action-btn {
+            padding: 0.75rem 1.25rem; /* 移动端 */
+            font-size: 0.875rem; /* 移动端 */
+        }
+        
+        @media (min-width: 768px) {
+            .action-btn {
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+            }
+        }
+
+        /* 快速链接自适应 */
+        .quick-link {
+            padding: 0.5rem 1rem;
+            font-size: 0.75rem;
+        }
+        
+        @media (min-width: 768px) {
+            .quick-link {
+                padding: 0.75rem 1.25rem;
+                font-size: 0.875rem;
+            }
+        }
+
+        /* 圆圈按钮自适应大小 */
+        .adaptive-spotlight {
+            width: 48px;
+            height: 48px;
+        }
+        
+        @media (min-width: 480px) {
+            .adaptive-spotlight {
+                width: 56px;
+                height: 56px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .adaptive-spotlight {
+                width: 64px;
+                height: 64px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .adaptive-spotlight {
+                width: 72px;
+                height: 72px;
+            }
+        }
+
+        /* 移动端优化：减少边距和间距 */
+        .mobile-optimized .mb-4 { margin-bottom: 0.75rem; }
+        .mobile-optimized .mb-6 { margin-bottom: 1rem; }
+        .mobile-optimized .mb-8 { margin-bottom: 1.5rem; }
+        .mobile-optimized .mb-10 { margin-bottom: 2rem; }
+        .mobile-optimized .mb-12 { margin-bottom: 2.5rem; }
+        .mobile-optimized .mt-8 { margin-top: 1.5rem; }
+        .mobile-optimized .mt-12 { margin-top: 2.5rem; }
+        .mobile-optimized .py-20 { padding-top: 3rem; padding-bottom: 3rem; }
+        .mobile-optimized .pt-28 { padding-top: 2rem; }
+        
+        @media (min-width: 768px) {
+            .mobile-optimized .mb-4 { margin-bottom: 1rem; }
+            .mobile-optimized .mb-6 { margin-bottom: 1.5rem; }
+            .mobile-optimized .mb-8 { margin-bottom: 2rem; }
+            .mobile-optimized .mb-10 { margin-bottom: 2.5rem; }
+            .mobile-optimized .mb-12 { margin-bottom: 3rem; }
+            .mobile-optimized .mt-8 { margin-top: 2rem; }
+            .mobile-optimized .mt-12 { margin-top: 3rem; }
+            .mobile-optimized .py-20 { padding-top: 5rem; padding-bottom: 5rem; }
+            .mobile-optimized .pt-28 { padding-top: 7rem; }
+        }
     </style>
 </head>
-<body class="antialiased selection:bg-clay-200 selection:text-warm-900 min-h-screen flex flex-col">
+<body class="antialiased selection:bg-clay-200 selection:text-warm-900 min-h-screen flex flex-col mobile-optimized">
 
     <div class="spotlight" id="spotlight"></div>
 
-    <!-- 导航栏 - 简化版 -->
-    <nav class="fixed top-4 left-0 right-0 z-50 px-4 md:px-8">
+    <!-- 导航栏 - 响应式 -->
+    <nav class="fixed top-4 left-0 right-0 z-50 px-3 md:px-8">
         <div class="max-w-6xl mx-auto relative">
-            <div class="glass-card rounded-full px-6 py-3 flex justify-between items-center">
-                <a href="/" class="text-2xl title-font text-warm-900 hover:text-clay-600 transition-colors flex items-center gap-3">
-                    <div class="relative w-8 h-8 rounded-full overflow-hidden border-2 border-white shadow-md ring-2 ring-clay-200">
+            <div class="glass-card rounded-full px-3 py-2 md:px-6 md:py-3 flex justify-between items-center">
+                <a href="/" class="text-xl md:text-2xl title-font text-warm-900 hover:text-clay-600 transition-colors flex items-center gap-2 md:gap-3">
+                    <div class="relative w-7 h-7 md:w-8 md:h-8 rounded-full overflow-hidden border-2 border-white shadow-md ring-2 ring-clay-200">
                         <img src="https://q1.qlogo.cn/g?b=qq&nk=2687821674&s=100" 
                              alt="XUSN" 
                              class="w-full h-full object-cover"
                              onerror="this.src='https://api.dicebear.com/7.x/avataaars/svg?seed=XUSN'">
                     </div>
-                    <span class="hidden sm:inline tracking-widest text-lg">返回首页</span>
+                    <span class="hidden sm:inline tracking-widest text-sm md:text-lg">返回首页</span>
                 </a>
                 
-                <a href="/" class="px-5 py-2 rounded-full bg-warm-800 text-white shadow-md hover:bg-warm-900 transition-all text-sm btn-text">
-                    <i class="fas fa-home mr-2"></i>首页
+                <a href="/" class="px-4 py-2 md:px-5 md:py-2 rounded-full bg-warm-800 text-white shadow-md hover:bg-warm-900 transition-all text-xs md:text-sm btn-text">
+                    <i class="fas fa-home mr-1 md:mr-2"></i><span class="hidden sm:inline">首页</span>
                 </a>
             </div>
         </div>
     </nav>
 
     <!-- 主内容区域 -->
-    <main class="flex-1 flex items-center justify-center relative z-10 px-4 py-20">
-        <!-- 装饰性背景元素 -->
-        <div class="blur-decor w-96 h-96 bg-clay-200 top-1/3 left-1/4"></div>
-        <div class="blur-decor w-80 h-80 bg-sage-200 bottom-1/3 right-1/4"></div>
+    <main class="flex-1 flex items-center justify-center relative z-10 px-4 py-16 md:py-20">
+        <!-- 装饰性背景元素 - 移动端隐藏 -->
+        <div class="blur-decor w-48 h-48 md:w-96 md:h-96 bg-clay-200 top-1/3 left-1/4 hidden md:block"></div>
+        <div class="blur-decor w-40 h-40 md:w-80 md:h-80 bg-sage-200 bottom-1/3 right-1/4 hidden md:block"></div>
         
-        <div class="text-center max-w-2xl mx-auto">
+        <div class="text-center max-w-md md:max-w-2xl mx-auto">
             <!-- 404 数字 -->
-            <div class="error-code mb-6">404</div>
+            <div class="error-code mb-3 md:mb-6">404</div>
             
             <!-- 标题 -->
-            <h1 class="text-3xl md:text-4xl text-warm-900 mb-4 title-font">
+            <h1 class="text-2xl md:text-4xl text-warm-900 mb-2 md:mb-4 title-font leading-tight">
                 <span class="gradient-text">哎呀</span>，你好像迷路了
             </h1>
             
             <!-- 副标题 -->
-            <p class="text-lg text-warm-800/70 mb-8 rounded-text">
-                这个页面暂时不存在，可能已经被移除或从未创建过。<br>
+            <p class="text-base md:text-lg text-warm-800/70 mb-6 md:mb-8 rounded-text leading-relaxed">
+                这个页面暂时不存在，可能已经被移除或从未创建过。<br class="hidden md:block">
                 别担心，我们可以带你回到安全的地方。
             </p>
             
             <!-- 一言显示区域 - 极简风格 -->
-            <div class="mb-10 px-4 py-3 rounded-xl bg-white/40 border border-white/60 inline-block">
-                <p class="text-sm text-warm-800/60 rounded-text italic" id="error-message">
+            <div class="mb-6 md:mb-10 px-3 py-2 md:px-4 md:py-3 rounded-xl bg-white/40 border border-white/60 inline-block">
+                <p class="text-sm md:text-base text-warm-800/60 rounded-text italic" id="error-message">
                     "走错路是发现新风景的开始"
                 </p>
             </div>
             
             <!-- 行动按钮 -->
-            <div class="flex flex-col items-center gap-6 mt-8">
+            <div class="flex flex-col items-center gap-4 md:gap-6 mt-4 md:mt-8">
                 <!-- 自适应圆圈聚光灯按钮 - 回到首页 -->
-                <div class="flex flex-col items-center gap-3">
+                <div class="flex flex-col items-center gap-2 md:gap-3">
                     <div class="circle-spotlight adaptive-spotlight rounded-full bg-clay-200/40" onclick="window.location.href='/'">
-                        <i class="fas fa-home text-clay-600"></i>
+                        <i class="fas fa-home text-clay-600 text-lg md:text-xl"></i>
                     </div>
-                    <span class="text-sm text-warm-800/60 rounded-text">回到首页</span>
+                    <span class="text-xs md:text-sm text-warm-800/60 rounded-text">回到首页</span>
                 </div>
                 
                 <!-- 备用按钮 -->
-                <div class="flex gap-4 mt-2">
-                    <a href="/" class="px-6 py-3 bg-warm-800 text-white rounded-full btn-text hover:bg-warm-900 transition-all hover:scale-105 shadow-lg">
+                <div class="flex flex-col sm:flex-row gap-3 md:gap-4 mt-2 md:mt-0 w-full max-w-xs sm:max-w-none justify-center">
+                    <a href="/" class="action-btn w-full sm:w-auto px-6 py-3 bg-warm-800 text-white rounded-full btn-text hover:bg-warm-900 transition-all hover:scale-105 shadow-lg text-center">
                         <i class="fas fa-home mr-2"></i>返回首页
                     </a>
-                    <button onclick="history.back()" class="px-6 py-3 bg-white text-warm-800 rounded-full btn-text hover:bg-clay-100 transition-all hover:scale-105 border-2 border-warm-200">
+                    <button onclick="history.back()" class="action-btn w-full sm:w-auto px-6 py-3 bg-white text-warm-800 rounded-full btn-text hover:bg-clay-100 transition-all hover:scale-105 border-2 border-warm-200 text-center">
                         <i class="fas fa-arrow-left mr-2"></i>返回上一页
                     </button>
                 </div>
             </div>
             
             <!-- 快速链接 -->
-            <div class="mt-12 pt-8 border-t border-warm-200/50">
-                <p class="text-sm text-warm-800/50 mb-4 rounded-text">或者浏览以下内容</p>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <a href="#about" class="px-4 py-2 bg-white/50 rounded-full text-sm text-warm-800 hover:bg-clay-100 transition-colors rounded-text border border-warm-100">
+            <div class="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-warm-200/50">
+                <p class="text-xs md:text-sm text-warm-800/50 mb-3 md:mb-4 rounded-text">或者浏览以下内容</p>
+                <div class="flex flex-wrap justify-center gap-2 md:gap-3">
+                    <a href="#about" class="quick-link px-4 py-2 bg-white/50 rounded-full text-warm-800 hover:bg-clay-100 transition-colors rounded-text border border-warm-100">
                         关于我
                     </a>
-                    <a href="#skills" class="px-4 py-2 bg-white/50 rounded-full text-sm text-warm-800 hover:bg-clay-100 transition-colors rounded-text border border-warm-100">
+                    <a href="#skills" class="quick-link px-4 py-2 bg-white/50 rounded-full text-warm-800 hover:bg-clay-100 transition-colors rounded-text border border-warm-100">
                         技能
                     </a>
-                    <a href="#projects" class="px-4 py-2 bg-white/50 rounded-full text-sm text-warm-800 hover:bg-clay-100 transition-colors rounded-text border border-warm-100">
+                    <a href="#projects" class="quick-link px-4 py-2 bg-white/50 rounded-full text-warm-800 hover:bg-clay-100 transition-colors rounded-text border border-warm-100">
                         作品
                     </a>
-                    <a href="#contact" class="px-4 py-2 bg-white/50 rounded-full text-sm text-warm-800 hover:bg-clay-100 transition-colors rounded-text border border-warm-100">
+                    <a href="#contact" class="quick-link px-4 py-2 bg-white/50 rounded-full text-warm-800 hover:bg-clay-100 transition-colors rounded-text border border-warm-100">
                         联系
                     </a>
                 </div>
@@ -271,11 +349,11 @@
         </div>
     </main>
 
-    <!-- 页脚 - 简化版 -->
-    <footer class="border-t-2 border-warm-200 py-8 text-center text-warm-800/50 text-sm relative z-10 bg-warm-50/30">
-        <div class="max-w-6xl mx-auto px-8">
-            <p class="text-xl text-warm-800 mb-2 title-font">XUSN</p>
-            <p class="mb-2 rounded-text text-sm">用温柔的方式改变世界</p>
+    <!-- 页脚 - 响应式 -->
+    <footer class="border-t-2 border-warm-200 py-6 md:py-8 text-center text-warm-800/50 text-xs md:text-sm relative z-10 bg-warm-50/30">
+        <div class="max-w-6xl mx-auto px-4 md:px-8">
+            <p class="text-xl md:text-2xl text-warm-800 mb-1 md:mb-2 title-font">XUSN</p>
+            <p class="mb-1 md:mb-2 rounded-text text-xs md:text-sm">用温柔的方式改变世界</p>
             <p class="text-xs opacity-60 rounded-text">&copy; 2026 XUSN. Made with 💛 and Code.</p>
         </div>
     </footer>
@@ -339,6 +417,16 @@
                 mainContent.style.transform = 'translateY(0)';
             }, 300);
         });
+
+        // 检测移动设备并调整样式
+        function detectMobile() {
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            if (isMobile) {
+                document.body.classList.add('mobile-optimized');
+            }
+        }
+        
+        document.addEventListener('DOMContentLoaded', detectMobile);
     </script>
 </body>
 </html>
